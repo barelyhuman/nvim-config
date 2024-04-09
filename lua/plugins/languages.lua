@@ -1,4 +1,19 @@
 return {
+
+		{
+			"nvim-treesitter/nvim-treesitter",
+			build = ":TSUpdate",
+			config = function()
+				local configs = require("nvim-treesitter.configs")
+
+				configs.setup({
+					ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "go", "nim", "javascript", "html" , "markdown"},
+					sync_install = false,
+					highlight = { enable = true },
+					indent = { enable = true },
+				})
+			end
+		},
 	{
 		"williamboman/mason.nvim",
 		config = function()
@@ -7,7 +22,7 @@ return {
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		ensure_installed = {"stylua"},
+		ensure_installed = {"stylua", "prettier"},
 	},
 	{ "neovim/nvim-lspconfig" },
 	{
